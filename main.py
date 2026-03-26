@@ -12,5 +12,12 @@ async def health_check():
 
 @app.get("/error")
 async def error_check():
-    return {"status": "unhealthy"}
-    raise HTTPException(status_code=500, detail="The system has encountered a critical failure!")
+    return JSONResponse(
+        status_code=500,
+        content={
+            "error": "InternalServerException",
+            "message": "The system encountered a simulated error for SRE testing.",
+            "trace_id": "SRE-TEST-12345",
+            "suggestion": "Check the Azure Dashboard for metric spikes."
+        }
+    )

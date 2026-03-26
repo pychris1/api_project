@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
 app = FastAPI()
 
@@ -13,3 +13,4 @@ async def health_check():
 @app.get("/error")
 async def error_check():
     return {"status": "unhealthy"}
+    raise HTTPException(status_code=500, detail="The system has encountered a critical failure!")

@@ -10,3 +10,6 @@ async def read_root():
 async def health_check():
     return {"status": "healthy"}
 
+@app.get("/error")
+async def error_check():
+    return {"status": "unhealthy"}
